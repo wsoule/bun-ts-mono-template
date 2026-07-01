@@ -32,6 +32,10 @@ starting any task:
 
 Do not load skills that are not relevant to the task.
 
+`.agents/skills/` is the single source of truth. `.claude/skills` is a symlink
+to it so Claude Code's native skill discovery picks up the same files; edit the
+skills under `.agents/skills/`, never through the symlink.
+
 ## Agent Artifacts
 
 Write agent-only planning and scratch artifacts under `.agents/ignore/` by
