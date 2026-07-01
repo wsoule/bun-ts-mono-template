@@ -38,14 +38,18 @@ skills under `.agents/skills/`, never through the symlink.
 
 ## Agent Artifacts
 
-Write agent-only planning and scratch artifacts under `.agents/ignore/` by
-default:
+Write **every** agent-only file under `.agents/ignore/`. It is the single,
+gitignored scratch directory for anything not meant to be committed: plans,
+specs, throwaway scripts, scratch notes, logs, generated or downloaded data, and
+any other working file. Do not scatter these across the repo root, package
+directories, or the system temp dir.
 
 - Plans: `.agents/ignore/plans/YYYY-MM-DD-<topic>.md`
 - Specs: `.agents/ignore/specs/YYYY-MM-DD-<topic>.md`
+- Anything else: a descriptively named subdirectory of `.agents/ignore/`
 
-`.agents/ignore/` is gitignored. Do not put source files, tests, or committed
-documentation there.
+Do not put source files, tests, or committed documentation under
+`.agents/ignore/`.
 
 ## Verification Baseline
 

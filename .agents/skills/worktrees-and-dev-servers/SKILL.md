@@ -18,6 +18,25 @@ parallel convention. Common signs are `scripts/wt.*`, `scripts/run-dev.*`,
 `.env.worktree`, `WORKTREE_*`/`PORT_OFFSET` env vars, or README/AGENTS
 instructions for worktree paths and ports.
 
+## Worktree Location
+
+Keep every worktree for a repo in one predictable place: a sibling directory
+next to the repo named `<repo-dir>-worktrees/`, with one subdirectory per
+worktree slug.
+
+```
+../<repo-dir>-worktrees/<slug>
+```
+
+A sibling directory (rather than a path inside the repo) keeps worktree files
+out of the main working tree, so `git status`, file watchers, typecheck, and
+`bun install` do not scan them. Never create a worktree inside the repo — for
+example under `.agents/ignore/` — because nesting one working tree inside
+another confuses git and tooling.
+
+If the repo exposes a `bun run wt` suite, let it own worktree placement instead
+of choosing a path manually.
+
 ## Worktree Commands
 
 If the repo exposes a `bun run wt` suite, inspect its help or source before use:
